@@ -14,19 +14,19 @@
               url: "https://scratch.mit.edu/api/v1/project/" + id + "/?format=json",
               beforeSend: function( xhr ) {
                 xhr.overrideMimeType( "text/plain; charset=x-user-defined" );
-              }
-            })
-            .done(function( data ) {
-                var jsonData = JSON.parse(data);
-                
-                if (itemToGet == "love-its") {
-                    return jsonData.love_count;
-                } else if (itemToGet == "favorites") {
-                    return jsonData.favorite_count;
-                } else if (itemToGet == "creator") {
-                    return jsonData.creator.username;
-                } else {
-                    return "Something's broken. Check to make sure the project ID you entered is correct.";
+              },
+              success: function( data ) {
+                    var jsonData = JSON.parse(data);
+
+                    if (itemToGet == "love-its") {
+                        callback(jsonData.love_count);
+                    } else if (itemToGet == "favorites") {
+                        return jsonData.favorite_count;
+                    } else if (itemToGet == "creator") {
+                        return jsonData.creator.username;
+                    } else {
+                        return "Something's broken. Check to make sure the project ID you entered is correct.";
+                    }
                 }
             });
         }
