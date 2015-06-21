@@ -20,13 +20,13 @@
                 var jsonData = JSON.parse(data);
                 
                 if (itemToGet == "love-its") {
-                    callback(jsonData.love_count);
+                    return jsonData.love_count;
                 } else if (itemToGet == "favorites") {
-                    callback(jsonData.favorite_count);
+                    return jsonData.favorite_count;
                 } else if (itemToGet == "creator") {
-                    callback(jsonData.creator.username);
+                    return jsonData.creator.username;
                 } else {
-                    callback("Something's broken. Check to make sure the project ID you entered is correct.");
+                    return "Something's broken. Check to make sure the project ID you entered is correct.";
                 }
             });
         }
